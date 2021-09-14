@@ -6,8 +6,14 @@ class LogInForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            fields: {},
-            errors: {}
+            username: '',
+            password: '',
+            usrerror: 'User name is empty',
+            pwserror: 'Password field is empty',
+            isSubmitDissabled: true,
+            isUserNameInValid : true,
+            isPasswordInValid: true
+
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,29 +33,77 @@ class LogInForm extends Component{
           
     }
 
+    
     validate(event) {
         console.log(this.state)
-        var pass = event.target.value;
+        /*var pass = event.target.value;
         var reg = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/';
-        var test = reg.test(pass);
+        var test = reg.test(pass);*/
         /*if (test) {
            // alert('pass'); error string
         } else{
             //alert('fail');
         }
         */
-       let isValid = false
+       let isUserNameInValid = false
+       let isPasswordValid = false
        if(event.target.name === 'username'){
-           
+           //console.log('user name is'+event.target.value)
+        //isUserNameValid = false
          var usr =  event.target.value
-         if(usr === ''){
+         console.log('user name is '+usr)
+         if(usr){
               
-             this.setState({usrerror: "Please enter user name"})
+             this.setState({usrerror: ''})
          }
+         if (!usr.match(/^[a-zA-Z ]*$/)) {
+            //formIsValid = false;
+           //this.usrerror = "*Please enter alphabet characters only.";
+           // this.setState({usrerror: '*Please enter alphabet characters only',isPasswordValid : false})
+            this.setState({       //Spreed operator
+                ...this.state,
+                usrerror: '*Please enter alphabet characters only',isPasswordInValid : false
+              });
+
+        }
+        else{
+            isUserNameValid = true
+        }
 
 
          //if(isValid === t)
        }
+       else if(event.target.name === 'password'){
+            //console.log('user name is'+event.target.value)
+            var pass =  event.target.value
+            console.log('password  is '+event.target.value)
+            if(usr){
+                
+                this.setState({pwserror: ""})
+            }
+            if (!pass.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+                //formIsValid = false;
+                this.setState({pwserror: '*Please enter secure and strong password'})
+            }
+            else{
+                isPasswordValid = true
+                this.setState({pwserror: ''})
+                /*
+                if(isUserNameValid){
+                    if(event.target.name === 'isSubmitDissabled'){
+                        var flag =  event.target.value
+                        this.setState({isSubmitDissabled: false})
+                    }
+                }
+                */
+            }
+
+
+         //if(isValid === t)
+        }
+        
+        
+        
 
     }
   
@@ -75,19 +129,21 @@ class LogInForm extends Component{
                     <label className = 'error' for="usrename">Username </label>
                         <input className ='input' type="text" id="username" name="username"  value={this.state.username} 
                         onChange = {this.handleChange}/><br></br>
+                        <div className="errorMsg">{this.state.usrerror}</div>
 
                     <label for="pwd">Password </label>
                         <input className ='input' type="password" id="password" name="password"  
                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                         value = {this.state.password} onChange ={ this.handleChange }  />
+                        <div className="errorMsg">{this.state.pwserror}</div>
 
                     
                     <label ></label><br></br>
-                        <input type="submit" disabled={!this.state.password} value="Log In" />
+                        <input type="submit" disabled={this.state.isSubmitDissabled} value="Log In" />
                     
 
                     <label ></label><br></br>
-                        <button type="button" class = 'button'  >Log In</button><br></br>
+                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid} >Log In</button><br></br>
                     
                         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
                     <label for="checkbox"> Remember me</label>
