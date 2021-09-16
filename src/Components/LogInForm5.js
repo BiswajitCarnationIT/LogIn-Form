@@ -10,7 +10,7 @@ class LogInForm extends Component{
             password: '',
             usrerror: 'User name is empty',
             pwserror: 'Password field is empty',
-            isSubmitDissabled: true,
+            //isSubmitDissabled: true,
             isUserNameInValid : true,
             isPasswordInValid: true
 
@@ -22,13 +22,12 @@ class LogInForm extends Component{
     }
 
     handleChange(event){
-        console.log(event.target);  //*
-        //this.setState({username: event.target.value});
-        
-        this.setState({       //Spreed operator
+        console.log(event.target);  
+        /*
+        this.setState({       
             ...this.state,
-            [event.target.name]:  event.target.value
-          });
+            //[event.target.name]:  event.target.value
+          }); */
           this.validate(event)
           
     }
@@ -47,9 +46,10 @@ class LogInForm extends Component{
          
         if (!usr.match(/^[a-zA-Z ]*$/)) {
 
-            this.setState({       //Spreed operator
+            this.setState({       
                 ...this.state,
-                usrerror: '*Please enter alphabet characters only',isUserNameInValid : true
+                [event.target.name]:  event.target.value,
+                usrerror: '*Please enter alphabet characters only'
               });
 
         }
@@ -57,12 +57,15 @@ class LogInForm extends Component{
         else if(usr.match(/^[a-zA-Z ]*$/)) {
             console.log('success')
             
-            this.setState({       //Spreed operator
+            this.setState({       
                 ...this.state,
-                isUserNameInValid : false
+                [event.target.name]:  event.target.value,
+                isUserNameInValid : false,
+                usrerror: ''
               });
              // console.log('success' + this.target.value)
         }
+        
         
         
 
@@ -71,37 +74,23 @@ class LogInForm extends Component{
             //console.log('user name is'+event.target.value)
             var pass =  event.target.value
             console.log('password  is '+event.target.value)
-            if(usr){
-                
-                this.setState({pwserror: ""})
-            }
+            
             if (!pass.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
-                //formIsValid = false;
-                this.setState({pwserror: '*Please enter secure and strong password'})
+                this.setState({       
+                    ...this.state,
+                    [event.target.name]:  event.target.value,
+                    pwserror: '*Please enter secure and strong password'
+                });
             }
             else{
-                //isPasswordValid = true
-                this.setState({pwserror: ''})
-
-                this.setState({isPasswordInValid : false})
-               /*
+                
                 this.setState({       
-                ...this.state,
-                isPasswordInValid : false
-              })
-              */
-              /*
-                if(isUserNameValid){
-                    if(event.target.name === 'isSubmitDissabled'){
-                        var flag =  event.target.value
-                        this.setState({isSubmitDissabled: false})
-                    }
-                }
-                */
+                    ...this.state,
+                    [event.target.name]:  event.target.value,
+                    isPasswordInValid : false,
+                    pwserror: ''
+                  });
             }
-
-
-         //if(isValid === t)
         }
         
         
@@ -138,13 +127,13 @@ class LogInForm extends Component{
                         value = {this.state.password} onChange ={ this.handleChange }  />
                         <div className="errorMsg">{this.state.pwserror}</div>
 
-                    
+                    {/*
                     <label ></label><br></br>
-                        <input type="submit" disabled={this.state.isSubmitDissabled} value="Log In" />
+                        <input type="submit" disabled={this.state.isPasswordInValid || this.state.isUserNameInValid } value="Log In" /> */} 
                     
 
                     <label ></label><br></br>
-                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid } >Log In</button><br></br>
+                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid } onClick ={this.handleSubmit} >Log In</button><br></br>
                     
                         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
                     <label for="checkbox"> Remember me</label>
