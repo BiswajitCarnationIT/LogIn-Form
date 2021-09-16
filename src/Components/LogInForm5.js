@@ -113,15 +113,15 @@ class LogInForm extends Component{
         return (
             <div class="container">
                 <form onSubmit ={this.handleSubmit}>
+                    <br></br><label className = 'Login' for="login">Login Form </label><br></br>
+                    <hr className = 'line'></hr>  
 
-                       
-
-                    <label className = 'error' for="usrename">Username </label>
+                    <label className = 'Label' for="usrename">Username </label><br></br>
                         <input className ='input' type="text" id="username" name="username"  value={this.state.username} 
-                        onChange = {this.handleChange}/><br></br>
+                        onChange = {this.handleChange}/>
                         <div className="errorMsg">{this.state.usrerror}</div>
 
-                    <label for="pwd">Password </label>
+                    <label className = 'Label' for="pwd">Password </label><br></br>
                         <input className ='input' type="password" id="password" name="password"  
                          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                         value = {this.state.password} onChange ={ this.handleChange }  />
@@ -136,7 +136,7 @@ class LogInForm extends Component{
                         <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid } onClick ={this.handleSubmit} >Log In</button><br></br>
                     
                         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
-                    <label for="checkbox"> Remember me</label>
+                    <label for="checkbox">Remember me</label><br></br>
                     <a href="url">Forgot Password?</a>
                     
                 </form>

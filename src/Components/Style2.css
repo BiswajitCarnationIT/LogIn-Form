@@ -2,7 +2,7 @@
     color : red
 }
 .input {
-    width: 25%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -12,36 +12,77 @@
   }
 
   .container {
+    
     background-color: #f1f1f1;
     padding: 20px;
+
+    width: 300px;
+    border: 1px solid #d6d7da;
+    padding: 0px 15px 15px 15px;
+    border-radius: 5px;
+    font-family: arial;
+    line-height: 16px;
+    color: #333333;
+    font-size: 14px;
+    /*background: #ffffff;*/
+    margin: 100px auto;
   }
 
   .button{
     background-color: #04AA6D;
-    width: 25%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    /*
     margin-top: 6px;
     margin-bottom: 16px;
     margin-left: 70px;
+    */
   }
 
   input[type=button] {
+
     background-color: #04AA6D;
     color: white;
-    width: 25%;
+    width: 75%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    /*
     margin-top: 6px;
     margin-bottom: 16px;
     margin-left: 70px;
+    */
+
+    padding: 10px;
+    border: solid 1px #BDC7D8;
   }
 
   .checkbox {
-    margin-left: 70px;
-    padding: 12px;
+    margin-left: 5px;
+    padding: 1px;
+  }
+
+  .errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+
+  .Login{
+    color: black;
+    font-size: 24px;
+  }
+
+  .line{
+    width:100%;
+    text-align:left;
+    /*margin-left:0 px;*/
+  }
+
+  .Label{
+    color:black;
+    text-align: left;
   }

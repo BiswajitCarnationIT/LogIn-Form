@@ -1,8 +1,8 @@
 import React from 'react';
-import './Style2.css';
+import './Style3.css';
 
 
-class LogInForm extends React.Component {
+class RegisterForm extends React.Component {
     constructor() {
       super();
       this.state = {
@@ -29,8 +29,8 @@ class LogInForm extends React.Component {
       if (this.validateForm()) {
           let fields = {};
           fields["username"] = "";
-          /*fields["emailid"] = "";
-          fields["mobileno"] = "";*/
+          fields["emailid"] = "";
+          fields["mobileno"] = "";
           fields["password"] = "";
           this.setState({fields:fields});
           alert("Form submitted");
@@ -55,7 +55,7 @@ class LogInForm extends React.Component {
           errors["username"] = "*Please enter alphabet characters only.";
         }
       }
-/*
+
       if (!fields["emailid"]) {
         formIsValid = false;
         errors["emailid"] = "*Please enter your email-ID.";
@@ -81,7 +81,6 @@ class LogInForm extends React.Component {
           errors["mobileno"] = "*Please enter valid mobile no.";
         }
       }
-    */
 
       if (!fields["password"]) {
         formIsValid = false;
@@ -114,11 +113,15 @@ class LogInForm extends React.Component {
         <label>Name</label>
         <input type="text" name="username" value={this.state.fields.username} onChange={this.handleChange} />
         <div className="errorMsg">{this.state.errors.username}</div>
-        <label>Password:</label>
         
+        <label>Password</label>
         <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
         <div className="errorMsg">{this.state.errors.password}</div>
         <input type="submit" className="button"  value="Register"/>
+
+        <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
+        <label for="checkbox">Remember me</label><br></br>
+        <a href="url">Forgot Password?</a>
         </form>
     </div>
 </div>
@@ -128,4 +131,6 @@ class LogInForm extends React.Component {
 
 
 }
-export default LogInForm;
+
+
+export default RegisterForm;
