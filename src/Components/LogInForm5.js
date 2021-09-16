@@ -35,45 +35,44 @@ class LogInForm extends Component{
 
     
     validate(event) {
-        console.log(this.state)
-        /*var pass = event.target.value;
-        var reg = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/';
-        var test = reg.test(pass);*/
-        /*if (test) {
-           // alert('pass'); error string
-        } else{
-            //alert('fail');
-        }
-        */
-       let isUserNameInValid = false
-       let isPasswordValid = false
+        //console.log(this.state)
+       
+
        if(event.target.name === 'username'){
            //console.log('user name is'+event.target.value)
-        //isUserNameValid = false
          var usr =  event.target.value
          console.log('user name is '+usr)
+         /*
          if(usr){
               
              this.setState({usrerror: ''})
          }
-         if (!usr.match(/^[a-zA-Z ]*$/)) {
-            //formIsValid = false;
+         */
+        if (!usr.match(/^[a-zA-Z ]*$/)) {
            //this.usrerror = "*Please enter alphabet characters only.";
            // this.setState({usrerror: '*Please enter alphabet characters only',isPasswordValid : false})
             this.setState({       //Spreed operator
                 ...this.state,
-                usrerror: '*Please enter alphabet characters only',isPasswordInValid : false
+                usrerror: '*Please enter alphabet characters only'
               });
 
         }
+        
         else{
-            isUserNameValid = true
+            console.log('success')
+            
+            this.setState({       //Spreed operator
+                ...this.state,
+                isUserNameInValid : false
+              });
+              
         }
-
+        
+        
 
          //if(isValid === t)
        }
-       else if(event.target.name === 'password'){
+       if(event.target.name === 'password'){
             //console.log('user name is'+event.target.value)
             var pass =  event.target.value
             console.log('password  is '+event.target.value)
@@ -86,9 +85,17 @@ class LogInForm extends Component{
                 this.setState({pwserror: '*Please enter secure and strong password'})
             }
             else{
-                isPasswordValid = true
+                //isPasswordValid = true
                 this.setState({pwserror: ''})
-                /*
+
+                this.setState({isPasswordInValid : false})
+               /*
+                this.setState({       
+                ...this.state,
+                isPasswordInValid : false
+              })
+              */
+              /*
                 if(isUserNameValid){
                     if(event.target.name === 'isSubmitDissabled'){
                         var flag =  event.target.value
@@ -115,7 +122,6 @@ class LogInForm extends Component{
         event.preventDefault();
     }
 
-    //onPasswordChange = event => {this.setState({password: event.target.value})}
     
     render(){
         console.log(this.state)
@@ -143,7 +149,7 @@ class LogInForm extends Component{
                     
 
                     <label ></label><br></br>
-                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid} >Log In</button><br></br>
+                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid ||this.isSubmitDissabled} >Log In</button><br></br>
                     
                         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
                     <label for="checkbox"> Remember me</label>
