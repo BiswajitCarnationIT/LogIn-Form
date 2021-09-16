@@ -42,35 +42,30 @@ class LogInForm extends Component{
            //console.log('user name is'+event.target.value)
          var usr =  event.target.value
          console.log('user name is '+usr)
-         /*
-         if(usr){
-              
-             this.setState({usrerror: ''})
-         }
-         */
+         
+        
+         
         if (!usr.match(/^[a-zA-Z ]*$/)) {
-           //this.usrerror = "*Please enter alphabet characters only.";
-           // this.setState({usrerror: '*Please enter alphabet characters only',isPasswordValid : false})
+
             this.setState({       //Spreed operator
                 ...this.state,
-                usrerror: '*Please enter alphabet characters only'
+                usrerror: '*Please enter alphabet characters only',isUserNameInValid : true
               });
 
         }
         
-        else{
+        else if(usr.match(/^[a-zA-Z ]*$/)) {
             console.log('success')
             
             this.setState({       //Spreed operator
                 ...this.state,
                 isUserNameInValid : false
               });
-              
+             // console.log('success' + this.target.value)
         }
         
         
 
-         //if(isValid === t)
        }
        if(event.target.name === 'password'){
             //console.log('user name is'+event.target.value)
@@ -149,7 +144,7 @@ class LogInForm extends Component{
                     
 
                     <label ></label><br></br>
-                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid ||this.isSubmitDissabled} >Log In</button><br></br>
+                        <button type="button" class = 'button' disabled = {this.state.isPasswordInValid || this.state.isUserNameInValid } >Log In</button><br></br>
                     
                         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
                     <label for="checkbox"> Remember me</label>
