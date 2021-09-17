@@ -7,8 +7,8 @@ class LogInForm extends Component {
     this.state = {
       username: "",
       password: "",
-      usrerror: "User name is empty",
-      pwserror: "Password field is empty",
+      usrerror: "",
+      pwserror: "",
       //isSubmitDissabled: true,
       isUserNameInValid: true,
       isPasswordInValid: true,
@@ -32,13 +32,13 @@ class LogInForm extends Component {
       var usr = event.target.value;
       console.log("user name is " + usr);
 
-      if (!usr.match(/^[a-zA-Z ]*$/)) {
+      if (!usr.match(/^[0-9a-zA-Z ]*$/)) {
         this.setState({
           ...this.state,
           [event.target.name]: event.target.value,
-          usrerror: "*Please enter alphabet characters only",
+          usrerror: "*Please enter alphanumeric characters only",
         });
-      } else if (usr.match(/^[a-zA-Z ]*$/)) {
+      } else if (usr.match(/^[0-9a-zA-Z ]*$/)) {
         console.log("success");
 
         this.setState({
@@ -93,12 +93,15 @@ class LogInForm extends Component {
     console.log(this.state);
     //const {username, password} = this.state
     return (
+      <div class="Outercontainer">
       <div class="container">
         <form onSubmit={this.handleSubmit}>
           <br></br>
+          <div className = "centerAlign">
           <label className="Login" for="login">
             Login Form{" "}
           </label>
+          </div>
           <br></br>
           <hr className="line"></hr>
 
@@ -111,6 +114,7 @@ class LogInForm extends Component {
             type="text"
             id="username"
             name="username"
+            placeholder="Enter Username"
             value={this.state.username}
             onChange={this.handleChange}
           />
@@ -125,6 +129,7 @@ class LogInForm extends Component {
             type="password"
             id="password"
             name="password"
+            placeholder="Enter Password"
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
             value={this.state.password}
             onChange={this.handleChange}
@@ -145,21 +150,24 @@ class LogInForm extends Component {
             }
             onClick={this.handleSubmit}
           >
-            Log In
+            Login
           </button>
           <br></br>
-
+          <div className = "ForgetPass">
+         
           <input
             type="checkbox"
-            class="checkbox"
+            
             id="rememberPassword"
             name="rememberPassword"
             value="rememberPassword"
           />
           <label for="checkbox">Remember me</label>
-          <br></br>
-          <a href="url">Forgot Password?</a>
+         
+          <a href="url" className ="ForgetPassLink">Forgot Password?</a>
+          </div>
         </form>
+      </div>
       </div>
     );
   }
