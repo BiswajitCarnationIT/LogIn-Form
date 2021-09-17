@@ -15,7 +15,7 @@
     background-color: #f1f1f1;
     padding: 10px red;
     width: 580px;
-    border: 1px solid #d6d7da;
+    border: 1px solid #f1f1e7;
     margin: 10px auto;
   }
 
@@ -27,30 +27,24 @@
     width: 400px;
     
     border: 5px solid #d6d7da;
-    /*padding: 0px 15px 15px 15px;*/
     margin: 50px black;
     border-radius: 5px;
     font-family: arial;
     line-height: 16px;
     color: #333333;
     font-size: 14px;
-    /*background: #ffffff;*/
     margin: 45px auto;
   }
 
   .button{
-    background-color: yellowgreen;   /*#04AA6D;*/
+    background-color: yellowgreen;   
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     color: white;
-    /*
-    margin-top: 6px;
-    margin-bottom: 16px;
-    margin-left: 70px;
-    */
+
   }
 
   input[type=button] {
@@ -62,11 +56,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    /*
-    margin-top: 6px;
-    margin-bottom: 16px;
-    margin-left: 70px;
-    */
+
 
     padding: 10px;
     border: solid 1px #BDC7D8;
@@ -92,7 +82,6 @@
   .line{
     width:100%;
     text-align:left;
-    /*margin-left:0 px;*/
   }
 
   .Label{
@@ -111,13 +100,11 @@
 
     width: 380px;
     border: 1px solid #d6d7da;
-    /*padding: 0px 15px 15px 15px;*/
     border-radius: 5px;
     font-family: arial;
     line-height: 6px;
     color: #333333;
     font-size: 14px;
-    /*background: #ffffff;*/
     margin: 20px auto;
   }
   .ForgetPassLink{
