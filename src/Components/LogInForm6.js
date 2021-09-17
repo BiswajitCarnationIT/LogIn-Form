@@ -7,7 +7,8 @@ class RegisterForm extends React.Component {
       super();
       this.state = {
         fields: {},
-        errors: {}
+        errors: {},
+        formInvalid: true
       }
 
       this.handleChange = this.handleChange.bind(this);
@@ -18,27 +19,29 @@ class RegisterForm extends React.Component {
     handleChange(e) {
       let fields = this.state.fields; 
       //         
-      fields[e.target.name] = e.target.value;   ///What is happening here  ????
+      fields[e.target.name] = e.target.value;   
       ///
       this.setState({
         fields   
       });
+      
+      this.validateForm()
+      
      
     }
 
     submituserRegistrationForm(e) {
       e.preventDefault();
-      if (this.validateForm()) {    /// If form is valid then why setting to empty ???
-          let fields = {};
-          fields["username"] = "";
-          fields["emailid"] = "";
-          this.setState({fields:fields});
-          alert("Form submitted");
-      }
+      alert("Form submitted \n" + "Username :" + this.state.fields["username"] + "\nPassword:"+this.state.fields["password"]);
+      let fields = {};
+      fields["username"] = "";
+      fields["password"] = "";
+          
+      this.setState({fields:fields,formInvalid: true});
 
     }
 
-    validateForm() {  //How it is getting stats ????
+    validateForm() {  
 
       let fields = this.state.fields;  
       let errors = {};
@@ -68,11 +71,25 @@ class RegisterForm extends React.Component {
           errors["password"] = "*Please enter secure and strong password.";
         }
       }
-
-     this.setState({    ///Why not using spread operator ???
-      ...this.state,
-        errors: errors
-      });
+      console.log( errors["password"])
+      console.log( fields["password"])
+      console.log( formIsValid)
+      if(formIsValid){
+        errors["password"] = "";
+        errors["username"] = "";
+        this.setState({    
+            ...this.state,
+            formInvalid: false,
+            errors: errors
+            });
+      }
+      //console.log( errors)   
+      else{
+        this.setState({    
+           ...this.state,
+           errors: errors        
+        });
+    }
       return formIsValid;  
 
 
@@ -81,6 +98,7 @@ class RegisterForm extends React.Component {
 
 
   render() {
+      console.log(this.state)
     return (
     <div id="main-registration-container">
      <div id="register">
@@ -93,7 +111,7 @@ class RegisterForm extends React.Component {
         <label>Password</label>
         <input type="password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
         <div className="errorMsg">{this.state.errors.password}</div>
-        <input type="submit" className="button"  value="Register"/>
+        <input type="submit" className="button"  value="Register" disabled = {this.state.formInvalid} />
 
         <input type="checkbox" class = 'checkbox' id="rememberPassword" name="rememberPassword" value="rememberPassword"/>
         <label for="checkbox">Remember me</label><br></br>
