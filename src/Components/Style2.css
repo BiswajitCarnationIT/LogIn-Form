@@ -11,35 +11,40 @@
     margin-bottom: 16px;
   }
 
-  .container {
+  .Outercontainer{
+    background-color: #f1f1f1;
+    padding: 10px red;
+    width: 580px;
+    border: 1px solid #f1f1e7;
+    margin: 10px auto;
+  }
+
+  .Outercontainer .container {
     
     background-color: #f1f1f1;
-    padding: 20px;
+    padding: 50px;
 
-    width: 350px;
-    border: 1px solid #d6d7da;
-    padding: 0px 15px 15px 15px;
+    width: 400px;
+    
+    border: 5px solid #d6d7da;
+    margin: 50px black;
     border-radius: 5px;
     font-family: arial;
     line-height: 16px;
     color: #333333;
     font-size: 14px;
-    /*background: #ffffff;*/
-    margin: 100px auto;
+    margin: 45px auto;
   }
 
   .button{
-    background-color: #04AA6D;
+    background-color: yellowgreen;   
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    /*
-    margin-top: 6px;
-    margin-bottom: 16px;
-    margin-left: 70px;
-    */
+    color: white;
+
   }
 
   input[type=button] {
@@ -51,11 +56,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    /*
-    margin-top: 6px;
-    margin-bottom: 16px;
-    margin-left: 70px;
-    */
+
 
     padding: 10px;
     border: solid 1px #BDC7D8;
@@ -73,17 +74,41 @@
 
   .Login{
     color: black;
-    font-size: 24px;
+    font-size: 34px;
+    font-weight: bold;
     text-align: center;
   }
 
   .line{
     width:100%;
     text-align:left;
-    /*margin-left:0 px;*/
   }
 
   .Label{
     color:black;
     text-align: left;
+    font-weight: bold;
   }
+
+  .centerAlign{
+    text-align: center;
+  }
+
+  .ForgetPass{
+    background-color: #f1f1f1;
+    padding: 10px;
+
+    width: 380px;
+    border: 1px solid #d6d7da;
+    border-radius: 5px;
+    font-family: arial;
+    line-height: 6px;
+    color: #333333;
+    font-size: 14px;
+    margin: 20px auto;
+  }
+  .ForgetPassLink{
+    float: right;
+    padding: 7px;
+  }
+ 

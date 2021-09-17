@@ -18,9 +18,9 @@ class RegisterForm extends React.Component {
 
     handleChange(e) {
       let fields = this.state.fields; 
-      //         
+      
       fields[e.target.name] = e.target.value;   
-      ///
+      
       this.setState({
         fields   
       });
@@ -83,7 +83,6 @@ class RegisterForm extends React.Component {
             errors: errors
             });
       }
-      //console.log( errors)   
       else{
         this.setState({    
            ...this.state,
